@@ -1,9 +1,9 @@
-mod cube;
 mod corner;
+mod cube;
 mod edge;
 mod face;
 
-pub use cube::*;
 pub use corner::*;
+pub use cube::*;
 pub use edge::*;
 pub use face::*;

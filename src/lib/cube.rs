@@ -13,6 +13,15 @@ impl Cube {
         return Self { length, faces };
     }
 
+    pub fn get_face(&self, color: char) -> Option<&Face> {
+        let index = self
+            .faces
+            .iter()
+            .position(|face| face.color == color)
+            .unwrap();
+        return self.faces.get(index);
+    }
+
     fn create_faces() -> Vec<Face> {
         let mut faces: Vec<Face> = Vec::new();
         let colors: [char; 6] = ['W', 'G', 'Y', 'B', 'R', 'O'];
@@ -24,14 +33,5 @@ impl Cube {
         }
 
         return faces;
-    }
-
-    pub fn get_face(&self, color: char) -> Option<&Face> {
-        let index = self
-            .faces
-            .iter()
-            .position(|face| face.color == color)
-            .unwrap();
-        return self.faces.get(index);
     }
 }

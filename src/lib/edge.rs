@@ -1,4 +1,4 @@
-// struct Edge {
-//   edge: Edge,
-//   corners: [Corner; 2],
-// }
+pub struct Edge {
+    edge: Box<Edge>,
+    // corners: [Corner; 2],
+}

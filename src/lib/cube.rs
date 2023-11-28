@@ -1,6 +1,6 @@
-use crate::COLORS;
 use crate::Colors;
 use crate::Face;
+use crate::COLORS;
 
 // opposite faces have the same adjacencies
 
@@ -10,6 +10,11 @@ pub struct Cube<'a> {
     pub faces: Vec<Face<'a>>,
 }
 
+// TODO:
+// - create all combinations of corners/edges here
+// - pass the appropriate references into the face when it's created
+//      - this might be unnecessary/wonky given ownership
+//      - cube focusing on it may be better/more simple for rotations
 impl<'a> Cube<'a> {
     pub fn new(length: u8) -> Self {
         let faces = Self::create_faces();

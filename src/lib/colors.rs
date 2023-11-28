@@ -12,16 +12,16 @@ pub const COLORS: [Colors; 6] = [
     Colors::Color('O'),
 ];
 
-#[derive(Debug, PartialEq, Eq)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum Colors {
     Color(char),
 }
 
 impl<'a> Colors {
-    pub fn connections(inputColor: Colors) -> (Colors, Vec<&'a Colors>) {
+    pub fn connections(input_color: Colors) -> (Colors, Vec<&'a Colors>) {
         let found_pair = CONNECTIONS
             .iter()
-            .find(|cnnct| inputColor == cnnct[0] || inputColor == cnnct[1])
+            .find(|cnnct| input_color == cnnct[0] || input_color == cnnct[1])
             .unwrap();
 
         let [front, back] = found_pair;
@@ -30,6 +30,30 @@ impl<'a> Colors {
             .filter(|&color| *color != *front && *color != *back)
             .collect();
 
-        return (inputColor, filtered);
+        return (input_color, filtered);
+    }
+
+    pub fn is_opposite_side(color: &Colors, opp: &Colors) -> bool {
+        let mut is_opposite;
+
+        let pair = CONNECTIONS
+            .iter()
+            .find(|cnct| *color == cnct[0] || *color == cnct[1])
+            .unwrap();
+        
+        is_opposite = pair.contains(color) && pair.contains(opp);
+        println!("is opp {is_opposite} {:?} {:?}", color, opp);
+        println!("from pair: {:?} {:?}", pair.contains(color), pair.contains(opp));
+
+        return is_opposite;
+    }
+
+    pub fn get_opposite(color: &Colors) -> Colors {
+        let pair = CONNECTIONS
+            .iter()
+            .find(|cnct| *color == cnct[0] || *color == cnct[1])
+            .unwrap();
+
+        return pair[1];
     }
 }

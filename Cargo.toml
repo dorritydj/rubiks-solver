@@ -8,6 +8,6 @@ edition = "2021"
 [dependencies]
 strum = "0.25.0"
 
-[lib]
-name = "rubiks"
-path = "src/lib/lib.rs"
+# [lib]
+# name = "rubiks"
+# path = "src/lib/lib.rs"

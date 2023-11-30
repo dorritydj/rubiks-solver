@@ -1,4 +1,4 @@
-use crate::{Colors, Edge, Corner};
+use crate::{Colors, Corner, Edge};
 
 #[derive(Debug)]
 pub struct Face<'a> {
@@ -11,13 +11,13 @@ pub struct Face<'a> {
 impl<'a> Face<'a> {
     pub fn new(color: Colors) -> Self {
         let (color, adjacencies) = Colors::connections(color);
-        let edges = Self::add_edges(&color, &adjacencies);
-        let corners = Self::add_corners(&color, &adjacencies);
+        // let edges = Self::add_edges(&color, &adjacencies);
+        // let corners = Self::add_corners(&color, &adjacencies);
 
         return Self {
             color,
-            adjacencies,
-            edges,
+            //     adjacencies,
+            //     edges,
         };
     }
 
@@ -34,7 +34,7 @@ impl<'a> Face<'a> {
 
     fn add_corners(color: &Colors, adjacencies: &Vec<&Colors>) -> Vec<Corner> {
         let mut corners: Vec<Corner> = Vec::new();
-        
+
         // TODO:
         // - three pairs of opposites: the face you're on, and the two remaining, A and B
         // - start with A[0]/A[1] can then both be connected to B[0] and B[1]
@@ -53,7 +53,7 @@ impl<'a> Face<'a> {
         for (index, &adj) in adjacencies.iter().enumerate() {
             // let mut adj_corners = Vec::new();
             // let next_index = (index + 1) % 4;
-            
+
             // println!("{:?}", adjacencies);
             // // this isn't evaluating all possible permutations
             // // just whatever is next to the current in the list
@@ -63,11 +63,11 @@ impl<'a> Face<'a> {
 
             // adj_corners.push(*adj);
             // adj_corners.push(*adjacencies[next_index]);
-        
+
             // let corner = Corner::new(*color, adj_corners);
             // println!("{:?}", corner);
         }
 
-        return corners; 
+        return corners;
     }
 }

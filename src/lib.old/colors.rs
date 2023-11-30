@@ -40,10 +40,14 @@ impl<'a> Colors {
             .iter()
             .find(|cnct| *color == cnct[0] || *color == cnct[1])
             .unwrap();
-        
+
         is_opposite = pair.contains(color) && pair.contains(opp);
         println!("is opp {is_opposite} {:?} {:?}", color, opp);
-        println!("from pair: {:?} {:?}", pair.contains(color), pair.contains(opp));
+        println!(
+            "from pair: {:?} {:?}",
+            pair.contains(color),
+            pair.contains(opp)
+        );
 
         return is_opposite;
     }

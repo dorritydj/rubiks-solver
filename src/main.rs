@@ -3,17 +3,17 @@ type Cube = (Side, Side, Side, Side, Side, Side);
 
 fn main() {
     // w
-    let front: Side = [[0,0,0],[0,0,0],[0,0,0]];
+    let front: Side = [[0, 0, 0], [0, 0, 0], [0, 0, 0]];
     // g
-    let top: Side = [[1,1,1],[1,1,1],[1,1,1]];
+    let top: Side = [[1, 1, 1], [1, 1, 1], [1, 1, 1]];
     // o
-    let right: Side = [[2,2,2],[2,2,2],[2,2,2]];
+    let right: Side = [[2, 2, 2], [2, 2, 2], [2, 2, 2]];
     // b
-    let bottom: Side = [[3,3,3],[3,3,3],[3,3,3]];
+    let bottom: Side = [[3, 3, 3], [3, 3, 3], [3, 3, 3]];
     // r
-    let left: Side = [[4,4,4],[4,4,4],[4,4,4]];
+    let left: Side = [[4, 4, 4], [4, 4, 4], [4, 4, 4]];
     // y
-    let back: Side = [[5,5,5],[5,5,5],[5,5,5]];
+    let back: Side = [[5, 5, 5], [5, 5, 5], [5, 5, 5]];
 
     let mut cube: Cube = (front, top, right, bottom, left, back);
     cube = rotate_clockwise(cube);
@@ -55,9 +55,8 @@ fn rotate_clockwise(mut cube: Cube) -> Cube {
         .iter_mut()
         .enumerate()
         .for_each(|(i, row)| row[0] = top_r[i]);
-    
-    left
-        .iter_mut()
+
+    left.iter_mut()
         .enumerate()
         .for_each(|(i, row)| row[2] = bot_r[i]);
     // done adjusting sides
